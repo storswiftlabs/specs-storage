@@ -41,8 +41,8 @@ type Range struct {
 }
 
 type Sealer interface {
-	SealPreCommit1(ctx context.Context, sector abi.SectorID, ticket abi.SealRandomness, pieces []abi.PieceInfo) (PreCommit1Out, error)
-	SealPreCommit2(ctx context.Context, sector abi.SectorID, pc1o PreCommit1Out) (SectorCids, error)
+	SealPreCommit1(ctx context.Context, sector abi.SectorID, ticket abi.SealRandomness, pieces []abi.PieceInfo, root cid.Cid) (PreCommit1Out, error)
+	SealPreCommit2(ctx context.Context, sector abi.SectorID, pc1o PreCommit1Out, root cid.Cid) (SectorCids, error)
 
 	SealCommit1(ctx context.Context, sector abi.SectorID, ticket abi.SealRandomness, seed abi.InteractiveSealRandomness, pieces []abi.PieceInfo, cids SectorCids) (Commit1Out, error)
 	SealCommit2(ctx context.Context, sector abi.SectorID, c1o Commit1Out) (Proof, error)
